@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AppTeca</string>
+    <string name="hint_buscar">Buscar por nombre o categoría…</string>
+</resources>
