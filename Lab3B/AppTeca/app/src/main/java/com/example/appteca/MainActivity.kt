@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         Log.d("VIDA", "Main → onCreate")
         setContentView(R.layout.activity_main)
 
-        adapter = AppAdapter(emptyList(),
+        adapter = AppAdapter(
             onAppClick = { app ->
                 val intent = Intent(this, DetalleActivity::class.java)
                 intent.putExtra("appId", app.id)

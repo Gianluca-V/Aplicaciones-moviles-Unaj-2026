@@ -22,14 +22,19 @@ class MainActivity : AppCompatActivity() {
         Log.d("VIDA", "Main → onCreate")
         setContentView(R.layout.activity_main)
 
-        adapter = AppAdapter(Catalogo.apps,
+        // Desafío 3 — El rescate manual: recuperar el modo que guardó onSaveInstanceState.
+        soloFavoritas = savedInstanceState?.getBoolean(CLAVE_SOLO_FAVORITAS) ?: false
+
+        adapter = AppAdapter(
             onAppClick = { app ->
                 val intent = Intent(this, DetalleActivity::class.java)
                 intent.putExtra("appId", app.id)
                 startActivity(intent)
             },
             onFavoritoClick = { app ->
-                app.esFavorita = !app.esFavorita
+                // La fila trae una copia (ver AppAdapter): se muta la app real del catálogo.
+                val real = Catalogo.apps.first { it.id == app.id }
+                real.esFavorita = !real.esFavorita
                 aplicarFiltros()          // cambió el estado → recalcular
             })
 
@@ -47,6 +52,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         aplicarFiltros()                  // estado inicial → primera foto
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean(CLAVE_SOLO_FAVORITAS, soloFavoritas)
     }
 
     override fun onResume() {
@@ -68,8 +78,15 @@ class MainActivity : AppCompatActivity() {
             it.nombre.contains(q, true) || it.categoria.contains(q, true)
         }
         if (soloFavoritas) lista = lista.filter { it.esFavorita }
+        // Desafío 2 — Favoritas primero: otro estado derivado más; el orden es estable,
+        // así que dentro de cada grupo se respeta el orden del catálogo.
+        lista = lista.sortedByDescending { it.esFavorita }
         adapter.actualizarLista(lista)
         findViewById<Button>(R.id.btnSoloFav).text =
             if (soloFavoritas) "⭐ Solo favoritas" else "☆ Todas"
+    }
+
+    private companion object {
+        const val CLAVE_SOLO_FAVORITAS = "soloFavoritas"
     }
 }
