@@ -2,13 +2,13 @@ package com.example.appteca
 
 object Catalogo {
     val apps = mutableListOf(
-        App(1, "WhatsApp", "Mensajería", "La uso para todo: grupos de la facu, familia y hasta para mandarme cosas a mí mismo."),
-        App(2, "Reddit", "Foros", "Las comunidades de programación y Android me resuelven dudas y me traen novedades."),
-        App(3, "YouTube", "Video", "Tutoriales de programación y charlas técnicas: medio aprendizaje sale de acá."),
-        App(4, "Google Maps", "Navegación", "Sin Maps no llego a ningún lado nuevo; el modo transporte público es clave."),
-        App(5, "Discord", "Comunidad", "Los servidores de estudio y de juego viven ahí, con voz y pantalla compartida."),
-        App(6, "Mercado Pago", "Finanzas", "Pagar con QR, transferir y dividir gastos sin tocar efectivo."),
-        App(7, "Duolingo", "Educación", "La racha diaria me obliga a practicar inglés aunque sea cinco minutos."),
-        App(8, "GitHub", "Desarrollo", "Revisar repos, issues y PRs desde el teléfono cuando no tengo la compu.")
+        App(1, "WhatsApp", "Mensajería", "Es la herramienta principal de comunicación: grupos de la facultad, familia y notas personales."),
+        App(2, "Reddit", "Foros", "Sus comunidades de programación, series y temas generales resultan entretenidas."),
+        App(3, "YouTube", "Video", "Ofrece tutoriales de programación y charlas técnicas."),
+        App(4, "Google Maps", "Navegación", "Resulta indispensable para desplazarse, en particular por su modo de transporte público."),
+        App(5, "Discord", "Comunidad", "Reúne servidores de estudio y de juego, con comunicación por voz y pantalla compartida."),
+        App(6, "Mercado Pago", "Finanzas", "Permite pagar con código QR, realizar transferencias y dividir gastos sin efectivo."),
+        App(7, "Duolingo", "Educación", "La racha diaria incentiva la práctica de idiomas, lo que permite acceder a contenido que no está disponible en español ni en inglés."),
+        App(8, "GitHub", "Desarrollo", "Permite revisar repositorios, issues y pull requests desde el teléfono.")
     )
 }
